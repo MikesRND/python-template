@@ -17,7 +17,7 @@ source .venv/bin/activate  # On Windows use `.venv\Scripts\activate`
 pip install -e .[dev]
 ```
 
-## Run all code tests and checks
+### Run all code tests and checks
 
 ```bash
 pre-commit run --all-files
