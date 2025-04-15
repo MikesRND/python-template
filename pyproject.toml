@@ -1,0 +1,76 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+# ========================================================
+# Configure python project
+# ========================================================
+
+[project]
+name = "my-package"
+dynamic = ["version"]
+description = "A modern Python package template."
+authors = [
+    { name = "Your Name", email = "your.email@example.com" }
+]
+dependencies = []
+requires-python = ">=3.12"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "mkdocs-material",
+    "mypy",
+    "ruff",
+    "pytest-cov",
+    "pre-commit"
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "my_package.__version__"}
+
+# ========================================================
+# Configure pytest coverage
+# ========================================================
+
+[tool.coverage.run]
+branch = true
+source = ["my_package"]
+
+[tool.coverage.report]
+omit = [
+    "*/__init__.py",
+    "*/tests/*"
+]
+show_missing = true
+
+# ========================================================
+# Ruff Configuration
+# ========================================================
+
+[tool.ruff]
+line-length = 88
+exclude = [
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    ".mypy_cache",
+    ".pytest_cache",
+    "docs",
+]
+
+# ========================================================
+# MyPy Configuration
+# ========================================================
+
+[tool.mypy]
+python_version = "3.11"
+warn_unused_configs = true
+ignore_missing_imports = true
+show_error_codes = true
+pretty = true
+# More Strict Options (project specific)
+#   strict = true
+#   warn_return_any = true
+#   disallow_untyped_defs = true
