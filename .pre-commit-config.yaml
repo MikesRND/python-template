@@ -1,0 +1,40 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff
+        name: ruff
+        entry: ruff
+        args: ["check", "--config", "pyproject.toml"]
+        language: system
+        types: [python]
+
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: mypy
+        args: ["--config-file", "pyproject.toml"]
+        language: system
+        types: [python]
+
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: pytest
+        args: ["--cov", "--cov-report=term-missing"]
+        language: system
+        types: [python]
+        pass_filenames: false
+        always_run: true
+
+  - repo: local
+    hooks:
+      - id: mkdocs
+        name: mkdocs
+        entry: mkdocs
+        args: ["build"]
+        language: system
+        types: [markdown]
+        pass_filenames: false
+        always_run: true
